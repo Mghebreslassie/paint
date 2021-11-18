@@ -1,55 +1,62 @@
 :root {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
   --bg-color: #dadada;
   --white: white;
   --pink: #fdf1f1;
 }
+body {
+  margin: 0;
+  padding: 0;
+}
 
 #background {
   background-color: var(--bg-color);
-  padding: 5%;
-}
-
-#main-container {
+  height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  height: 50vh;
-}
-
-#top-half {
-  display: flex;
   justify-content: center;
-  align-items: center;
-  flex: 1;
-  width: 100%;
 }
-
-#bottom-half {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 4;
-  width: 100%;
-}
-
-#toolbar {
-  border: 5px solid black;
-  width: 80%;
-  height: 60%;
-  border-radius: 15px;
-}
-
-#canvas-container {
-  background-color: white;
-  border: 1px solid black;
-  width: 100%;
+.content {
   height: 100%;
+}
+.header {
+  height: 10%;
+  background-color: blueviolet;
+}
+.footer {
+  height: 10%;
+  background-color: blueviolet;
+}
+.section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.left {
+  height: 15%;
+}
+.middle {
+  height: 60%;
+}
+.right {
+  height: 25%;
+}
+
+.toolbar {
+  background-color: blue;
+  width: 90%;
+  height: 70%;
+  border-radius: 20px;
+}
+
+.optionalSettings {
+  background-color: blue;
+  width: 90%;
+  height: 90%;
+  border-radius: 20px;
 }
 
 #canvas {
-  border: 1px solid red;
+  background-color: white;
+  border-radius: 20px;
 }

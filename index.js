@@ -62,6 +62,10 @@ let eraseButton = document.getElementById("erase-button")
 
 let canvas = createCanvas("canvas")
 canvas.isDrawingMode = true
+canvas.setDimensions(
+  { width: "95%", height: "100%", margin: "0 2%" },
+  { cssOnly: true }
+)
 
 rectButton.addEventListener("click", () => addRect(canvas))
 drawButton.addEventListener("click", () => isDrawing(canvas))
