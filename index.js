@@ -1,53 +1,85 @@
-window.addEventListener("load", drawing())
+const createCanvas = (id) => {
+  return new fabric.Canvas(id)
+}
+
+const addRect = (canvas) => {
+  let rect = new fabric.Rect({
+    left: 100,
+    top: 100,
+    fill: "red",
+    width: 20,
+    height: 20,
+  })
+  canvas.add(rect)
+}
+const addCircle = (canvas) => {
+  let circle = new fabric.Circle({
+    radius: 20,
+    fill: "green",
+    left: 100,
+    top: 100,
+  })
+  canvas.add(circle)
+}
+
+const createEllipse = () => {
+  return new fabric.Ellipse()
+}
+
+const createLine = () => {
+  return new fabric.Line()
+}
+
+const createPolygon = () => {
+  return new fabric.Polygon()
+}
+
+const addTriangle = (canvas) => {
+  let triangle = new fabric.Triangle()
+  canvas.add(triangle)
+}
+const isDrawing = (canvas) => {
+  console.log(canvas.isDrawingMode)
+  canvas.freeDrawingBrush = new fabric.PencilBrush(canvas)
+  canvas.isDrawingMode
+    ? (canvas.isDrawingMode = false)
+    : (canvas.isDrawingMode = true)
+  canvas.renderAll()
+}
+const isErasing = (canvas) => {
+  console.log(canvas.isDrawingMode)
+  canvas.isDrawingMode = !canvas.isDrawingMode
+  canvas.freeDrawingBrush = new fabric.EraserBrush(canvas)
+  //  optional
+  canvas.freeDrawingBrush.width = 10
+}
+
 let drawButton = document.getElementById("draw-button")
+let circleButton = document.getElementById("circle-button")
+let rectButton = document.getElementById("rect-button")
+let triangleButton = document.getElementById("triangle-button")
+let eraseButton = document.getElementById("erase-button")
 
-function useCanvas() {
-  let canvas = document.getElementById("canvas")
-  let ctx = canvas.getContext("2d")
+let canvas = createCanvas("canvas")
+canvas.isDrawingMode = true
 
-  //   ctx.fillStyle = "rgb(200,0,0)"
-  //   ctx.fillRect(10, 10, 50, 50)
+rectButton.addEventListener("click", () => addRect(canvas))
+drawButton.addEventListener("click", () => isDrawing(canvas))
+circleButton.addEventListener("click", () => addCircle(canvas))
+triangleButton.addEventListener("click", () => addTriangle(canvas))
+eraseButton.addEventListener("click", () => isErasing(canvas))
 
-  //   ctx.fillStyle = "rgba(0,0,200,0.5)"
-  //   ctx.fillRect(30, 30, 50, 50)
+canvas.freeDrawingBrush = new fabric.EraserBrush(canvas)
+//  optional
+canvas.freeDrawingBrush.width = 10
+canvas.isDrawingMode = true
 
-  //   ctx.lineWidth = 7.0
-  //   ctx.strokeStyle = "green"
-  //   ctx.strokeRect(50, 50, 50, 50)
+// let imgElement = document.getElementById("image-0")
+// fabric.Image.fromURL("naruto.jpg", function (oImg) {
+//   oImg.scale(0.5).set("flipX", true)
+//   canvas.add(oImg)
+// })
+// canvas.add(imgInstance)
 
-  //   ctx.lineWidth = 1
-  //   ctx.clearRect(20, 20, 50, 50)
-
-  //resize dynamically
-
-  let drawOn = false
-  ctx.beginPath()
-
-  function startDraw() {
-    drawOn = true
-  }
-  function endDraw() {
-    drawOn = false
-  }
-  function draw(e) {
-    if (!drawOn) {
-      return null
-    }
-    console.log(e.clientX)
-    ctx.lineWidth = 10
-    ctx.lineCap = "round"
-    ctx.strokeStyle = "black"
-    ctx.lineTo(e.clientX, e.clientY)
-    ctx.stroke()
-  }
-  canvas.addEventListener("mousedown", startDraw)
-  canvas.addEventListener("mouseup", endDraw)
-  canvas.addEventListener("mousemove", draw)
-}
-
-function drawing() {
-  var canvas = new fabric.Canvas("canvas")
-  canvas.isDrawingMode = true
-  canvas.freeDrawingBrush.width = 5
-  canvas.freeDrawingBrush.color = "#ff0000"
-}
+// circle.set("selectable", false) makes object selectable scaling rotating dragging
+// canvas.remove(canvas.item(0)) first object added
