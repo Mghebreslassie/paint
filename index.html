@@ -4,9 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css" />
     <title>Paint</title>
-</head>
-<body>
     
+</head>
+<body id="body">
+    <div id="background" >
+        <div class="div" id="main-container">
+            <div id="top-half">
+                <div id="toolbar">
+                    <button id="draw-button">draw</button>
+                </div>
+            </div>
+            <div id="bottom-half">
+                <div id="canvas-container">
+                    <canvas id="canvas"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+<script type='text/javascript' src='http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.4.0/fabric.min.js'></script>
+<script src="index.js" ></script>
 </html>
