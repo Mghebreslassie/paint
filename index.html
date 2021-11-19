@@ -5,21 +5,51 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <title>Paint</title>
-    
+    <script>
+        const showModal = () => {
+  let modalOverlay = document.getElementsByClassName("modal-overlay")[0]
+let isShowing  = getComputedStyle(modalOverlay).display
+isShowing === 'none' ? modalOverlay.style.display = 'block': modalOverlay.style.display = 'none';
+console.log(isShowing)
+}
+    </script>
 </head>
 <body id="body">
     <div id="background" >
+        <div class="modal-overlay" onclick="showModal()">
+            <div class="modal-container"></div>
+        </div>
         <div class="header"></div>
         <div class="content">
             <div class="section left">
-                <div class="toolbar"></div>
+                <div class="toolbar">
+                    <i class="uil uil-circle"></i>
+                    <i class="uil uil-square"></i>
+                    <i class="uil uil-triangle"></i>
+                    <i class="uil uil-picture"></i>
+                    <i class="uil uil-illustration"></i>
+                    <i class="uil uil-line-alt"></i>
+                    <i class="uil uil-brush-alt"></i>
+                </div>
             </div>
             <div class="section middle">
                 <canvas id="canvas"></canvas>
             </div>
             <div class="section right">
-                <div class="optionalSettings"></div>
+                <div class="optionalSettings">
+                    <div class="settings-button">
+                        <button onclick="showModal()">size</button>
+                        <button>opacity</button>
+                        <button>border</button>
+                    </div>
+                    <div class="settings-button">
+                        <button>fill-color</button>
+                        <button>color</button>
+                        <button>stroke-color</button>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="footer"></div>
