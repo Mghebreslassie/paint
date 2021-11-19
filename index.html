@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css" />
+    
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <title>Paint</title>
     <script>
@@ -14,8 +15,8 @@
   let modalOverlay = document.getElementsByClassName("modal-overlay")[0]
 let isShowing  = getComputedStyle(modalOverlay).display
 isShowing === 'none' ? modalOverlay.style.display = 'block': modalOverlay.style.display = 'none';
-setTitle(document.getElementById('modal-container'), 'sonic boom')
-setInput(document.getElementById('modal-container'), 'opacity')
+setTitle(document.getElementById('modal-container'), attribute)
+setInput(document.getElementById('modal-container'), attribute)
 
 }
 const setInput = (node, title) => {
@@ -25,15 +26,12 @@ const setInput = (node, title) => {
     } else {
         type = 'color'
     }
-    let input = document.createElement('input')
+    let input = document.getElementById('modal-input')
     input.setAttribute('type', type)
-    node.appendChild(input)
 }
 const setTitle = (node, title) => {
-    let text = document.createTextNode(title)
-    let textP = document.createElement('p')
-    textP.appendChild(text)
-    node.appendChild(textP)
+    let text = document.getElementById('modal-title')
+    text.textContent = title
 }
     </script>
 </head>
@@ -60,8 +58,8 @@ const setTitle = (node, title) => {
                     <i class="uil uil-triangle" id="triangle-button"></i>
                     <i class="uil uil-picture"></i>
                     <i class="uil uil-illustration" id="draw-button"></i>
-                    <i class="uil uil-line-alt"></i>
-                    <i class="uil uil-brush-alt"></i>
+                    <i class="uil uil-vector-square"></i>
+                    <i class="fas fa-eraser"></i>
                 </div>
             </div>
             <div class="section middle">
@@ -71,13 +69,13 @@ const setTitle = (node, title) => {
                 <div class="optionalSettings">
                     <div class="settings-row">
                         <div class="settings-button" onclick="showModal(event, 'size')">size</div>
-                        <div class="settings-button" onclick="showModal('opacity')">opacity</div>
-                        <div class="settings-button" onclick="showModal('border')">border</div>
+                        <div class="settings-button" onclick="showModal(event, 'opacity')">opacity</div>
+                        <div class="settings-button" onclick="showModal(event, 'border')">border</div>
                     </div>
                     <div class="settings-row">
-                        <div class="settings-button" onclick="showModal('fill color')">fill-color</div>
-                        <div class="settings-button" onclick="showModal('color')">color</div>
-                        <div class="settings-button" onclick="showModal('stroke color')">stroke-color</div>
+                        <div class="settings-button" onclick="showModal(event, 'fill color')">fill-color</div>
+                        <div class="settings-button" onclick="showModal(event, 'color')">color</div>
+                        <div class="settings-button" onclick="showModal(event, 'stroke color')">stroke-color</div>
                     </div>
                 </div>
             </div>
@@ -86,5 +84,6 @@ const setTitle = (node, title) => {
     </div>
 </body>
 <script type='text/javascript' src='./lib/fabric.min.js'></script>
+<script src="https://kit.fontawesome.com/25f604d651.js" crossorigin="anonymous"></script>
 <script src="index.js" ></script>
 </html>
