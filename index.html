@@ -25,11 +25,11 @@ console.log(isShowing)
         <div class="content">
             <div class="section left">
                 <div class="toolbar">
-                    <i class="uil uil-circle"></i>
-                    <i class="uil uil-square"></i>
-                    <i class="uil uil-triangle"></i>
+                    <i class="uil uil-circle" id="circle-button"></i>
+                    <i class="uil uil-square" id="rect-button"></i>
+                    <i class="uil uil-triangle" id="triangle-button"></i>
                     <i class="uil uil-picture"></i>
-                    <i class="uil uil-illustration"></i>
+                    <i class="uil uil-illustration" id="draw-button"></i>
                     <i class="uil uil-line-alt"></i>
                     <i class="uil uil-brush-alt"></i>
                 </div>
@@ -40,14 +40,14 @@ console.log(isShowing)
             <div class="section right">
                 <div class="optionalSettings">
                     <div class="settings-button">
-                        <button onclick="showModal()">size</button>
-                        <button>opacity</button>
-                        <button>border</button>
+                        <div onclick="showModal()">size</div>
+                        <div>opacity</div>
+                        <div>border</div>
                     </div>
                     <div class="settings-button">
-                        <button>fill-color</button>
-                        <button>color</button>
-                        <button>stroke-color</button>
+                        <div>fill-color</div>
+                        <div>color</div>
+                        <div>stroke-color</div>
                     </div>
                 </div>
             </div>

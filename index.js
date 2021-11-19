@@ -61,22 +61,22 @@ let triangleButton = document.getElementById("triangle-button")
 let eraseButton = document.getElementById("erase-button")
 
 let canvas = createCanvas("canvas")
-canvas.isDrawingMode = true
 canvas.setDimensions(
   { width: "95%", height: "100%", margin: "0 2%" },
   { cssOnly: true }
 )
 
 rectButton.addEventListener("click", () => addRect(canvas))
-drawButton.addEventListener("click", () => isDrawing(canvas))
 circleButton.addEventListener("click", () => addCircle(canvas))
 triangleButton.addEventListener("click", () => addTriangle(canvas))
+drawButton.addEventListener("click", () => isDrawing(canvas))
 eraseButton.addEventListener("click", () => isErasing(canvas))
 
-canvas.freeDrawingBrush = new fabric.EraserBrush(canvas)
-//  optional
-canvas.freeDrawingBrush.width = 10
-canvas.isDrawingMode = true
+// canvas.isDrawingMode = true
+// canvas.freeDrawingBrush = new fabric.EraserBrush(canvas)
+// //  optional
+// canvas.freeDrawingBrush.width = 10
+// canvas.isDrawingMode = true
 
 // let imgElement = document.getElementById("image-0")
 // fabric.Image.fromURL("naruto.jpg", function (oImg) {
