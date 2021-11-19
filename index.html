@@ -8,18 +8,48 @@
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <title>Paint</title>
     <script>
-        const showModal = () => {
+        
+        const showModal = (event, attribute) => {
+            console.log(event)
   let modalOverlay = document.getElementsByClassName("modal-overlay")[0]
 let isShowing  = getComputedStyle(modalOverlay).display
 isShowing === 'none' ? modalOverlay.style.display = 'block': modalOverlay.style.display = 'none';
-console.log(isShowing)
+setTitle(document.getElementById('modal-container'), 'sonic boom')
+setInput(document.getElementById('modal-container'), 'opacity')
+
+}
+const setInput = (node, title) => {
+    let type;
+    if (title === 'opacity' || title === 'size' || title === 'border') {
+        type = 'range'
+    } else {
+        type = 'color'
+    }
+    let input = document.createElement('input')
+    input.setAttribute('type', type)
+    node.appendChild(input)
+}
+const setTitle = (node, title) => {
+    let text = document.createTextNode(title)
+    let textP = document.createElement('p')
+    textP.appendChild(text)
+    node.appendChild(textP)
 }
     </script>
 </head>
 <body id="body">
     <div id="background" >
-        <div class="modal-overlay" onclick="showModal()">
-            <div class="modal-container"></div>
+        <div id="modal-overlay" class="modal-overlay" onclick="showModal()">
+            <div id="modal-container" class="modal-container">
+                <div id="modal-content" class="modal-content">
+                    <div id="title-container" class="title-container">
+                        <p id="modal-title">opacity</p>
+                    </div>
+                    <div id="input-container" class="input-container">
+                        <input id="modal-input" type="color" />
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="header"></div>
         <div class="content">
@@ -39,15 +69,15 @@ console.log(isShowing)
             </div>
             <div class="section right">
                 <div class="optionalSettings">
-                    <div class="settings-button">
-                        <div onclick="showModal()">size</div>
-                        <div>opacity</div>
-                        <div>border</div>
+                    <div class="settings-row">
+                        <div class="settings-button" onclick="showModal(event, 'size')">size</div>
+                        <div class="settings-button" onclick="showModal('opacity')">opacity</div>
+                        <div class="settings-button" onclick="showModal('border')">border</div>
                     </div>
-                    <div class="settings-button">
-                        <div>fill-color</div>
-                        <div>color</div>
-                        <div>stroke-color</div>
+                    <div class="settings-row">
+                        <div class="settings-button" onclick="showModal('fill color')">fill-color</div>
+                        <div class="settings-button" onclick="showModal('color')">color</div>
+                        <div class="settings-button" onclick="showModal('stroke color')">stroke-color</div>
                     </div>
                 </div>
             </div>
