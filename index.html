@@ -11,19 +11,25 @@
     <script>
         
         const showModal = (event, attribute) => {
-            console.log(event)
-  let modalOverlay = document.getElementsByClassName("modal-overlay")[0]
-let isShowing  = getComputedStyle(modalOverlay).display
-isShowing === 'none' ? modalOverlay.style.display = 'block': modalOverlay.style.display = 'none';
-setTitle(document.getElementById('modal-container'), attribute)
+            let modalOverlay = document.getElementsByClassName("modal-overlay")[0]
+            modalOverlay.style.display = 'block'
+  setTitle(document.getElementById('modal-container'), attribute)
 setInput(document.getElementById('modal-container'), attribute)
+}
 
+const closeModal = (event) => {
+    let clickedOnModal = false
+            event.path.forEach(e => {
+               if (e.id === 'modal-container') clickedOnModal = true;
+            })
+            let modalOverlay = document.getElementsByClassName("modal-overlay")[0]
+            clickedOnModal? modalOverlay.style.display = 'block' : modalOverlay.style.display = 'none'
 }
 const setInput = (node, title) => {
     let type;
-    if (title === 'opacity' || title === 'size' || title === 'border') {
+    if (title === 'skew X' || title === 'skew Y' || title === 'stroke width' || title === 'opacity') {
         type = 'range'
-    } else {
+    } else if (title === 'fill color'  || title === 'stroke color'){
         type = 'color'
     }
     let input = document.getElementById('modal-input')
@@ -33,18 +39,20 @@ const setTitle = (node, title) => {
     let text = document.getElementById('modal-title')
     text.textContent = title
 }
+
+
     </script>
 </head>
 <body id="body">
     <div id="background" >
-        <div id="modal-overlay" class="modal-overlay" onclick="showModal()">
+        <div id="modal-overlay" class="modal-overlay" onclick="closeModal(event)">
             <div id="modal-container" class="modal-container">
                 <div id="modal-content" class="modal-content">
                     <div id="title-container" class="title-container">
                         <p id="modal-title">opacity</p>
                     </div>
                     <div id="input-container" class="input-container">
-                        <input id="modal-input" type="color" />
+                        <input class="input-range" id="modal-input" />
                     </div>
                 </div>
             </div>
@@ -56,10 +64,10 @@ const setTitle = (node, title) => {
                     <i class="uil uil-circle" id="circle-button"></i>
                     <i class="uil uil-square" id="rect-button"></i>
                     <i class="uil uil-triangle" id="triangle-button"></i>
-                    <i class="uil uil-picture"></i>
+                    <i class="uil uil-picture" id="image-button"><input class="custom-file-input" type='file' /></i>
                     <i class="uil uil-illustration" id="draw-button"></i>
-                    <i class="uil uil-vector-square"></i>
-                    <i class="fas fa-eraser"></i>
+                    <i class="uil uil-vector-square" id="line-button"></i>
+                    <i class="fas fa-eraser" id="erase-button"></i>
                 </div>
             </div>
             <div class="section middle">
@@ -68,14 +76,14 @@ const setTitle = (node, title) => {
             <div class="section right">
                 <div class="optionalSettings">
                     <div class="settings-row">
-                        <div class="settings-button" onclick="showModal(event, 'size')">size</div>
-                        <div class="settings-button" onclick="showModal(event, 'opacity')">opacity</div>
-                        <div class="settings-button" onclick="showModal(event, 'border')">border</div>
+                        <div class="settings-button" onclick="showModal(event, 'skew X')">skew X</div>
+                        <div class="settings-button" onclick="showModal(event, 'stroke width')">stroke width</div>
+                        <div class="settings-button" onclick="showModal(event, 'skew Y')">skew Y</div>
                     </div>
                     <div class="settings-row">
-                        <div class="settings-button" onclick="showModal(event, 'fill color')">fill-color</div>
-                        <div class="settings-button" onclick="showModal(event, 'color')">color</div>
-                        <div class="settings-button" onclick="showModal(event, 'stroke color')">stroke-color</div>
+                        <div class="settings-button" onclick="showModal(event, 'fill color')">fill color</div>
+                        <div class="settings-button" onclick="showModal(event, 'opacity')">opacity</div>
+                        <div class="settings-button" onclick="showModal(event, 'stroke color')">stroke color</div>
                     </div>
                 </div>
             </div>
