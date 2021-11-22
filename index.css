@@ -54,7 +54,8 @@ body {
   background-color: #548edf;
 }
 
-.toolbar > i {
+.toolbar > i,
+.toolbar-icon {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -62,13 +63,15 @@ body {
   width: 100%;
   font-size: 1.5rem;
   color: white;
+  position: relative;
 }
 /* .toolbar > i:hover {
   transition: all 0.2s ease-out;
   transform: scale(1.1);
   color: turquoise;
 } */
-.toolbar > i:hover {
+.toolbar > i:hover,
+.toolbar-icon:hover {
   transition: all 0.2s ease-out;
   background-color: turquoise;
 }
@@ -148,8 +151,30 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.file {
+  height: 100%;
+  width: 100%;
+}
+#file {
+  display: none;
+}
+.file::after {
+  /* content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  background-color: #48067a; */
+}
+
+.file-custom {
+  /* display: none; */
+}
+
 @media screen and (min-width: 414px) {
-  .toolbar > i {
+  .toolbar > i,
+  .toolbar-icon {
     font-size: 1.8rem;
     color: white;
   }
@@ -161,7 +186,8 @@ body {
   }
 }
 @media screen and (min-width: 768px) {
-  .toolbar > i {
+  .toolbar > i,
+  .toolbar-icon {
     font-size: 3rem;
     color: rgb(77, 111, 192);
   }
@@ -173,7 +199,8 @@ body {
   }
 }
 @media screen and (min-width: 1024px) {
-  .toolbar > i {
+  .toolbar > i,
+  .toolbar-icon {
     font-size: 3rem;
     color: white;
   }
