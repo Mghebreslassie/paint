@@ -60,28 +60,6 @@ const addLine = (canvas) => {
   canvas.on("mouse:up", function (o) {
     isDown = false
   })
-
-  // function addCoordinate(e) {
-  //   coords.push(e.pointer)
-  //   console.log(e.pointer)
-  // }
-  // function createCoordList() {
-  //   if (coords.length >= 2) {
-  //     coords = coords.slice(coords.length - 2)
-  //     let y = [coords[0].x, coords[0].y, coords[1].x, coords[1].y]
-  //     return y
-  //   }
-  //   return null
-  // }
-  // function createLine() {
-  //   let line = new fabric.Line(createCoordList(), {
-  //     left: 10,
-  //     top: 15,
-  //     stroke: "red",
-  //   })
-  //   console.log(coords)
-  //   canvas.add(line)
-  // }
 }
 
 const addTriangle = (canvas) => {
