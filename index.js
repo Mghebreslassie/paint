@@ -2,6 +2,12 @@ const createCanvas = (id) => {
   return new fabric.Canvas(id)
 }
 
+function cleanUpHandlers(canvas) {
+  canvas.__eventListeners["mouse:down"] = []
+  canvas.__eventListeners["mouse:move"] = []
+  canvas.__eventListeners["mouse:up"] = []
+}
+
 const addRect = (canvas) => {
   let rect = new fabric.Rect({
     left: 100,
@@ -15,6 +21,7 @@ const addRect = (canvas) => {
   })
   canvas.add(rect)
   rect.set("selectable", true)
+  cleanUpHandlers(canvas)
 }
 const addCircle = (canvas) => {
   let circle = new fabric.Circle({
@@ -26,40 +33,55 @@ const addCircle = (canvas) => {
   })
   canvas.add(circle)
   circle.set("selectable", true)
+  cleanUpHandlers(canvas)
 }
 
-const addLine = (e, canvas) => {
-  let coords = []
-  lineOn = !lineOn
-  if (lineOn) {
-    canvas.on("mouse:down", (e) => addCoordinate(e))
-    canvas.on("mouse:down", createCoordList)
-    canvas.on("mouse:down", createLine)
-  } else {
-    canvas.__eventListeners["mouse:down"] = []
-  }
-
-  function addCoordinate(e) {
-    coords.push(e.pointer)
-    console.log(e.pointer)
-  }
-  function createCoordList() {
-    if (coords.length >= 2) {
-      coords = coords.slice(coords.length - 2)
-      let y = [coords[0].x, coords[0].y, coords[1].x, coords[1].y]
-      return y
-    }
-    return null
-  }
-  function createLine() {
-    let line = new fabric.Line(createCoordList(), {
-      left: 10,
-      top: 15,
-      stroke: "red",
+const addLine = (canvas) => {
+  canvas.isDrawingMode = false
+  canvas.on("mouse:down", function (o) {
+    isDown = true
+    var pointer = canvas.getPointer(o.e)
+    var points = [pointer.x, pointer.y, pointer.x, pointer.y]
+    line = new fabric.Line(points, {
+      strokeWidth: 5,
+      fill: "black",
+      stroke: "black",
+      originX: "center",
+      originY: "center",
     })
-    console.log(coords)
     canvas.add(line)
-  }
+  })
+  canvas.on("mouse:move", function (o) {
+    if (!isDown) return
+    var pointer = canvas.getPointer(o.e)
+    line.set({ x2: pointer.x, y2: pointer.y })
+    canvas.renderAll()
+  })
+  canvas.on("mouse:up", function (o) {
+    isDown = false
+  })
+
+  // function addCoordinate(e) {
+  //   coords.push(e.pointer)
+  //   console.log(e.pointer)
+  // }
+  // function createCoordList() {
+  //   if (coords.length >= 2) {
+  //     coords = coords.slice(coords.length - 2)
+  //     let y = [coords[0].x, coords[0].y, coords[1].x, coords[1].y]
+  //     return y
+  //   }
+  //   return null
+  // }
+  // function createLine() {
+  //   let line = new fabric.Line(createCoordList(), {
+  //     left: 10,
+  //     top: 15,
+  //     stroke: "red",
+  //   })
+  //   console.log(coords)
+  //   canvas.add(line)
+  // }
 }
 
 const addTriangle = (canvas) => {
@@ -78,6 +100,7 @@ const addTriangle = (canvas) => {
   })
   canvas.add(triangle)
   triangle.set("selectable", true)
+  cleanUpHandlers(canvas)
 }
 
 const isDrawing = (canvas) => {
@@ -92,6 +115,7 @@ const isDrawing = (canvas) => {
   }
   canvas.freeDrawingBrush = new fabric.PencilBrush(canvas)
   canvas.renderAll()
+  cleanUpHandlers(canvas)
 }
 const isErasing = (canvas) => {
   eraseOn = !eraseOn
@@ -106,6 +130,7 @@ const isErasing = (canvas) => {
   canvas.freeDrawingBrush = new fabric.EraserBrush(canvas)
   //  optional
   canvas.freeDrawingBrush.width = 10
+  cleanUpHandlers(canvas)
 }
 
 const addImage = (event) => {
@@ -117,11 +142,11 @@ const addImage = (event) => {
     oImg.scale(0.5)
     canvas.add(oImg)
   })
+  cleanUpHandlers(canvas)
 }
 
 let drawOn = true
 let eraseOn = true
-let lineOn = false
 
 let drawButton = document.getElementById("draw-button")
 let circleButton = document.getElementById("circle-button")
@@ -181,5 +206,5 @@ circleButton.addEventListener("click", () => addCircle(canvas))
 triangleButton.addEventListener("click", () => addTriangle(canvas))
 drawButton.addEventListener("click", () => isDrawing(canvas))
 eraseButton.addEventListener("click", () => isErasing(canvas))
-lineButton.addEventListener("click", (e) => addLine(e, canvas))
+lineButton.addEventListener("click", () => addLine(canvas))
 imageButton.addEventListener("change", (event) => addImage(event))
