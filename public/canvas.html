@@ -19,7 +19,8 @@ setInput(document.getElementById('modal-container'), attribute)
 
 const closeModal = (event) => {
     let clickedOnModal = false
-            event.path.forEach(e => {
+    let path = event.path || (event.composedPath && event.composedPath())
+            path.forEach(e => {
                if (e.id === 'modal-container') clickedOnModal = true;
             })
             let modalOverlay = document.getElementsByClassName("modal-overlay")[0]
