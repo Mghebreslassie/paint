@@ -208,6 +208,8 @@ body {
   opacity: 0;
   transition: 1s all ease;
   overflow: hidden;
+  max-width: 1600px;
+  margin: 0 auto;
 }
 .open {
   transition: 1s all ease;
