@@ -39,7 +39,19 @@ const setTitle = (node, title) => {
     let text = document.getElementById('modal-title')
     text.textContent = title
 }
+const setActive = () => {
+    let buttons = document.querySelectorAll('.settings-button')
+    buttons.forEach(button => {
+        button.classList.remove('disabled')
+    })
+}
 
+const setDisabled = () => {
+    let buttons = document.querySelectorAll('.settings-button')
+    buttons.forEach(button => {
+        button.classList.add('disabled')
+    })
+}
 
     </script>
 </head>
@@ -64,18 +76,18 @@ const setTitle = (node, title) => {
             <div class="section left">
                 <div class="toolbar">
                     <i class="uil uil-circle" id="circle-button" onclick="setActive()"></i>
-                    <i class="uil uil-square" id="rect-button"></i>
-                    <i class="uil uil-triangle" id="triangle-button"></i>
-                    <label class="file">
+                    <i class="uil uil-square" id="rect-button" onclick="setActive()"></i>
+                    <i class="uil uil-triangle" id="triangle-button" onclick="setActive()"></i>
+                    <label class="file" onclick="setDisabled()">
                     <i class="uil uil-picture toolbar-icon" id="image-button">
                             <input id="file" type="file" />
                             <span class="file-custom"></span>
                         </i>
                     </label>
                     <!-- <i class="uil uil-picture" id="image-button"><input class="custom-file-input" type='file' /></i> -->
-                    <i class="uil uil-illustration" id="draw-button"></i>
-                    <i class="uil uil-line-alt" id="line-button"></i>
-                    <i class="fas fa-eraser" id="erase-button"></i>
+                    <i class="uil uil-illustration" id="draw-button" onclick="setDisabled()"></i>
+                    <i class="uil uil-line-alt" id="line-button" onclick="setDisabled()"></i>
+                    <i class="fas fa-eraser" id="erase-button" onclick="setDisabled()"></i>
                 </div>
             </div>
             <div class="section middle">

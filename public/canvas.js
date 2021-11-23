@@ -16,8 +16,8 @@ const addRect = (canvas) => {
     width: 20,
     height: 20,
     objectCaching: false,
-    stroke: "green",
-    strokeWidth: 10,
+    stroke: "blue",
+    strokeWidth: 1,
   })
   canvas.add(rect)
   rect.set("selectable", true)
@@ -26,9 +26,11 @@ const addRect = (canvas) => {
 const addCircle = (canvas) => {
   let circle = new fabric.Circle({
     radius: 20,
-    fill: "green",
+    fill: "blue",
     left: 100,
     top: 100,
+    stroke: "red",
+    strokeWidth: 1,
     objectCaching: false,
   })
   canvas.add(circle)
@@ -69,12 +71,9 @@ const addTriangle = (canvas) => {
     height: 60,
     width: 60,
     stroke: "blue",
-    strokeWidth: 4,
+    strokeWidth: 1,
     left: 50,
     top: 20,
-    opacity: 0.4,
-    skewX: 30,
-    skewY: 30,
   })
   canvas.add(triangle)
   triangle.set("selectable", true)
