@@ -189,7 +189,16 @@ body {
   height: 100%;
   object-fit: contain;
 }
-
+.github-links {
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: rgb(0, 73, 243);
+}
+.github-links:hover {
+  transition: 0.2s all ease;
+  color: rgb(19, 253, 242);
+}
 .footer-text {
   font-family: "Poppins";
   color: rgb(44, 44, 44);
