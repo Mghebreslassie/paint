@@ -57,11 +57,13 @@ const setTitle = (node, title) => {
                 </div>
             </div>
         </div>
-        <div class="header"></div>
+        <div class="header">
+            <img src="./assets/logo.png" class="logo" />
+        </div>
         <div class="content">
             <div class="section left">
                 <div class="toolbar">
-                    <i class="uil uil-circle" id="circle-button"></i>
+                    <i class="uil uil-circle" id="circle-button" onclick="setActive()"></i>
                     <i class="uil uil-square" id="rect-button"></i>
                     <i class="uil uil-triangle" id="triangle-button"></i>
                     <label class="file">
@@ -94,10 +96,13 @@ const setTitle = (node, title) => {
                 </div>
             </div>
         </div>
-        <div class="footer"></div>
+        <div class="footer">
+            <span class="footer-text">Created by mghebreslassie and nathang99</span>
+            <span class="copyright">Copyright 2021</span>
+        </div>
     </div>
 </body>
-<script type='text/javascript' src='../lib/fabric.min.js'></script>
+<script type='text/javascript' src='./lib/fabric.min.js'></script>
 <script src="https://kit.fontawesome.com/25f604d651.js" crossorigin="anonymous"></script>
 <script src="canvas.js" ></script>
 </html>
