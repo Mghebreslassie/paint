@@ -152,19 +152,22 @@ body {
   background-color: rgb(235 237 245);
   top: 25%;
   left: 7%;
-  border-radius: 10%;
+  border-radius: 25px;
 }
 
 .modal-content {
   box-sizing: border-box;
   height: 100%;
-  padding: 10%;
 }
 
 .title-container {
   font-size: 2rem;
   font-family: sans-serif;
   text-align: center;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .input-container {

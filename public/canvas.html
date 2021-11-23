@@ -20,6 +20,7 @@ setInput(document.getElementById('modal-container'), attribute)
 const closeModal = (event) => {
     let clickedOnModal = false
     let path = event.path || (event.composedPath && event.composedPath())
+    console.log(path)
             path.forEach(e => {
                if (e.id === 'modal-container') clickedOnModal = true;
             })
