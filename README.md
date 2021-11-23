@@ -1,6 +1,6 @@
 # paint
 
-try it out @ overspray.netlify.app
+try it out @ https://overspray.netlify.app/
 
 this web application was built using html, css and vanilla js.
 It was developed by mghebreslassie and nathang99 @ github.com.
