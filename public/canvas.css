@@ -199,6 +199,27 @@ body {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   color: rgb(46, 46, 46);
 }
+
+.more-info {
+  padding: 20% 5%;
+  display: flex;
+  flex-direction: column;
+  height: 0;
+  opacity: 0;
+  transition: 1s all ease;
+  overflow: hidden;
+}
+.open {
+  transition: 1s all ease;
+  height: 100%;
+  opacity: 1;
+  overflow: visible;
+}
+.dev-cards {
+  padding: 10% 0;
+  display: flex;
+  justify-content: space-evenly;
+}
 @media screen and (min-width: 414px) {
   .toolbar > i,
   .toolbar-icon {

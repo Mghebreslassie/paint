@@ -11,37 +11,19 @@
     <link rel="stylesheet" href="css/bootstrap-icons.css">
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="./canvas.css">
+    <script>
+      const test = () => {
+        let div = document.getElementsByClassName('more-info')[0]
+        div.classList.add('open')
+      }
+    </script>
   </head>
   <body>
     <header class="position-relative dark-background-color" style="min-height: 100vh;">
       <nav class="navbar navbar-expand-lg navbar-dark py-4 px-5">
         <a class="navbar-brand" href="#"><img src="./assets/logo.png" width="100px" height="100px" alt=""></a><button class="navbar-toggler" type="button" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse ms-lg-5 mt-4 mt-lg-0" id="navbarSupportedContent">
-          <ul class="navbar-nav align-items-center">
-            <li class="nav-item">
-              <a class="nav-link" href="#"><span>Home</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"><span>Product</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"><span>Pricing</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"><span>Contact</span></a>
-            </li>
-          </ul>
-          <ul class="navbar-nav mt-4 mt-lg-0 ms-auto align-items-center">
-            <li class="nav-item">
-              <a class="primary-text-color" href="#"><strong>Login</strong></a>
-            </li>
-            <li class="nav-item ms-lg-4 mt-4 mt-lg-0">
-              <button class="btn primary-color"><span class="btn-text light-text-color">Become a member</span><i class="bi bi-arrow-right-short icn-xs light-text-color" style=
-              "margin-left: 15px"></i></button>
-            </li>
-          </ul>
-        </div>
       </nav>
       <div class="container-fluid">
         <div class="row justify-content-between align-items-center mx-0">
@@ -56,7 +38,7 @@
               Tools at your fingertips, get creative today!
             </h4>
             <div class="cta" style="margin-top: 35px">
-              <button class="btn primary-color"><span class="btn-text"><a href="./canvas.html">Try Now</a></span></button><button class="btn primary-color btn-outline" style="margin-left: 10px"><span class="btn-text">Learn
+              <button class="btn primary-color" ><span class="btn-text"><a href="./canvas.html">Try Now</a></span></button><button class="btn primary-color btn-outline" style="margin-left: 10px" onclick="test()"><span class="btn-text">Learn
               More</span></button>
             </div>
           </div>
@@ -65,8 +47,45 @@
           </div>
         </div>
       </div>
+      <section class="more-info" >
+        <div class="card text-center">
+          <div class="card-header">
+            Featured
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Hackathon Project: Overspray</h5>
+            <p class="card-text" style="margin:2% auto; width: 50%;">this web app is built using vanilla javascript and fabric js library
+              it has the ability to create lines, simple polygons, and add images.
+              each object has selectable properties which can be adjusted.</p>
+              
+          </div>
+          <div class="card-footer text-muted">
+            MintBean.io hackathon
+          </div>
+        </div>
+        <div class="dev-cards">
+          <div class="card" style="width: 45%; ">
+            <img class="card-img-top" src="assets/messele.jpg" alt="Card image cap">
+            <div class="card-body">
+              <p class="card-text">My name is messele I'm a full stack developer.
+                I have experience using libraries and frameworks like ExpressJs, Javascript, React, PostgreSQL. Hawaiian pizza > everything.</p>
+              </div>
+            </div>
+            <div class="card" style="width: 45%;">
+              <img class="card-img-top" src="assets/logo.png" alt="Card image cap">
+              <div class="card-body">
+                <p class="card-text" >My name is messele I'm a full stack developer.
+                  I have experience using libraries and frameworks like ExpressJs, Javascript, React, PostgreSQL.</p>
+                </div>
+              </div>
+            </div>
+        <!-- <img  class="portrait"/>
+        <p class="text">this web app is built using vanilla javascript and fabric js library
+          it has the ability to create lines, simple polygons, and add images.
+          each object has selectable properties which can be adjusted.</p>
+          <p class="text"></p> -->
+      </section>
     </header>
-    
     <script type='text/javascript' src='../lib/fabric.min.js'></script>
     <script src="js/jquery-3.4.1.min.js"></script> 
     <script src="js/bootstrap.bundle.min.js"></script> 
